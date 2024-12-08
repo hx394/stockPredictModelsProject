@@ -86,11 +86,11 @@ class LSTM_GARCH(nn.Module):
         self.beta = nn.Parameter(torch.tensor([0.8]))
 ```
 ## Implementation Details
-Framework: PyTorch
-Training Device: GPU (CUDA) when available
-Optimization: Adam optimizer
-Loss Function: Mean Squared Error (MSE)
-Evaluation Metrics: MSE, MAE, RMSE
+- Framework: PyTorch
+- Training Device: GPU (CUDA) when available
+- Optimization: Adam optimizer
+- Loss Function: Mean Squared Error (MSE)
+- Evaluation Metrics: MSE, MAE, RMSE
 
 ## Special Cases (Run and only Garch-NVDA.ipynb for NVDA's stock for GRU-Garch model)
 NVDA: Required modified architecture due to high price volatility
