@@ -1,4 +1,4 @@
-Project: Comparison Among GRU, LSTM, and Arima/Garch Hybrid Models to Predict Stock Price
+# Project: Comparison Among GRU, LSTM, and Arima/Garch Hybrid Models to Predict Stock Price
 
 Contributors: Hongzhen Xu, Cheyi Wu, Jingming Cheng
 
@@ -57,7 +57,7 @@ Space for Cheyi Wu
 
 This part implements and compares different hybrid approaches combining deep learning models (GRU/LSTM) with GARCH (Generalized Autoregressive Conditional Heteroskedasticity) for stock price prediction. The models were tested on seven major stocks: AAPL, IBM, META, MSFT, NVDA, TSLA, and VZ.
 
-## Models Implemented
+### Models Implemented
 - Base Models:
   - GRU (Gated Recurrent Unit) (Based on Hongzhen's work)
   - LSTM (Long Short-Term Memory) (Based on Hongzhen's work)
@@ -66,7 +66,7 @@ This part implements and compares different hybrid approaches combining deep lea
   - GRU-GARCH
   - LSTM-GARCH
 
-## Model Architectures
+#### Model Architectures
 GRU-GARCH Hybrid
 ```
 class GRU_GARCH(nn.Module):
@@ -85,27 +85,27 @@ class LSTM_GARCH(nn.Module):
         self.alpha = nn.Parameter(torch.tensor([0.1]))
         self.beta = nn.Parameter(torch.tensor([0.8]))
 ```
-## Implementation Details
+#### Implementation Details
 - Framework: PyTorch
 - Training Device: GPU (CUDA) when available
 - Optimization: Adam optimizer
 - Loss Function: Mean Squared Error (MSE)
 - Evaluation Metrics: MSE, MAE, RMSE
 
-## Special Cases (Run and only Garch-NVDA.ipynb for NVDA's stock for GRU-Garch model)
+#### Special Cases (Run and only Garch-NVDA.ipynb for NVDA's stock for GRU-Garch model)
 NVDA: Required modified architecture due to high price volatility
 Increased hidden dimensions
 Additional layers
 Modified learning rate
 Enhanced error handling
 
-## Output Files
+#### Output Files
 - model_comparison.csv: Comparative metrics for base and hybrid models
 - predictions.csv: Actual vs predicted prices
 - training_loss.png: Training loss curves
 - predictions.png: Visualization of predictions
 
-## Required Libraries
+#### Required Libraries
 ```
 # Core libraries
 pip install numpy
@@ -121,7 +121,7 @@ pip install arch  # For ARCH/GARCH models
 pip install seaborn
 pip install plotly  # Optional, for interactive plots
 ```
-## Version Requirements
+#### Version Requirements
 -numpy>=1.19.2
 - pandas>=1.2.0
 - torch>=1.9.0
@@ -130,7 +130,7 @@ pip install plotly  # Optional, for interactive plots
 - arch>=5.0.0
 - seaborn>=0.11.2
 - plotly>=5.3.1  # Optional
-## Environment Setup
+#### Environment Setup
 ```
 # Create and activate virtual environment (recommended)
 python -m venv venv
@@ -140,12 +140,12 @@ venv\Scripts\activate  # For Windows
 # Install all requirements
 pip install -r requirements.txt
 ```
-## GPU Support (Optional but Recommended)
+#### GPU Support (Optional but Recommended)
 ```
 # For CUDA support (check PyTorch website for correct version)
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118  # For CUDA 11.8
 ```
-## System Requirements
+#### System Requirements
 - Python 3.8 or higher
 - CUDA-capable GPU (optional, but recommended for faster training)
 - Minimum 8GB RAM
