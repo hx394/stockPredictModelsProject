@@ -53,8 +53,103 @@ Make sure you have Python 3.8+, the following dependencies are required:
 -----------------------------------------------------------------------------------------------------------
 
 ## Space for Cheyi Wu
+Space for Cheyi Wu
 
-(待则谊补充)
+This part implements and compares different hybrid approaches combining deep learning models (GRU/LSTM) with GARCH (Generalized Autoregressive Conditional Heteroskedasticity) for stock price prediction. The models were tested on seven major stocks: AAPL, IBM, META, MSFT, NVDA, TSLA, and VZ.
+
+## Models Implemented
+- Base Models:
+  - GRU (Gated Recurrent Unit) (Based on Hongzhen's work)
+  - LSTM (Long Short-Term Memory) (Based on Hongzhen's work)
+-GARCH(1,1)
+- Hybrid Models:
+  - GRU-GARCH
+  - LSTM-GARCH
+
+## Model Architectures
+GRU-GARCH Hybrid
+```
+class GRU_GARCH(nn.Module):
+    def __init__(self, input_dim, hidden_dim, num_layers, output_dim):
+        self.gru = nn.GRU(input_dim, hidden_dim, num_layers, batch_first=True)
+        self.omega = nn.Parameter(torch.tensor([0.1]))
+        self.alpha = nn.Parameter(torch.tensor([0.1]))
+        self.beta = nn.Parameter(torch.tensor([0.8]))
+```
+LSTM-GARCH Hybrid
+```
+class LSTM_GARCH(nn.Module):
+    def __init__(self, input_dim, hidden_dim, num_layers, output_dim):
+        self.lstm = nn.LSTM(input_dim, hidden_dim, num_layers, batch_first=True)
+        self.omega = nn.Parameter(torch.tensor([0.1]))
+        self.alpha = nn.Parameter(torch.tensor([0.1]))
+        self.beta = nn.Parameter(torch.tensor([0.8]))
+```
+## Implementation Details
+Framework: PyTorch
+Training Device: GPU (CUDA) when available
+Optimization: Adam optimizer
+Loss Function: Mean Squared Error (MSE)
+Evaluation Metrics: MSE, MAE, RMSE
+
+## Special Cases (Run and only Garch-NVDA.ipynb for NVDA's stock for GRU-Garch model)
+NVDA: Required modified architecture due to high price volatility
+Increased hidden dimensions
+Additional layers
+Modified learning rate
+Enhanced error handling
+
+## Output Files
+- model_comparison.csv: Comparative metrics for base and hybrid models
+- predictions.csv: Actual vs predicted prices
+- training_loss.png: Training loss curves
+- predictions.png: Visualization of predictions
+
+## Required Libraries
+```
+# Core libraries
+pip install numpy
+pip install pandas
+pip install torch  # PyTorch
+pip install scikit-learn
+pip install matplotlib
+
+# GARCH modeling
+pip install arch  # For ARCH/GARCH models
+
+# Data processing and visualization
+pip install seaborn
+pip install plotly  # Optional, for interactive plots
+```
+## Version Requirements
+-numpy>=1.19.2
+- pandas>=1.2.0
+- torch>=1.9.0
+- scikit-learn>=0.24.2
+- matplotlib>=3.3.4
+- arch>=5.0.0
+- seaborn>=0.11.2
+- plotly>=5.3.1  # Optional
+## Environment Setup
+```
+# Create and activate virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # For Unix/macOS
+venv\Scripts\activate  # For Windows
+
+# Install all requirements
+pip install -r requirements.txt
+```
+## GPU Support (Optional but Recommended)
+```
+# For CUDA support (check PyTorch website for correct version)
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118  # For CUDA 11.8
+```
+## System Requirements
+- Python 3.8 or higher
+- CUDA-capable GPU (optional, but recommended for faster training)
+- Minimum 8GB RAM
+- 50GB free disk space (for data and model storage)
 
 ---------------------------------------------------------------------------------------------------------
 
