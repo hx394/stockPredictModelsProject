@@ -57,7 +57,6 @@ Make sure you have Python 3.8+, the following dependencies are required:
 ## Space for Cheyi Wu
 
 ### who implemented the GRU-GARCH model and LSTM-GARCH model
-Space for Cheyi Wu
 
 This part implements and compares different hybrid approaches combining deep learning models (GRU/LSTM) with GARCH (Generalized Autoregressive Conditional Heteroskedasticity) for stock price prediction. The models were tested on seven major stocks: AAPL, IBM, META, MSFT, NVDA, TSLA, and VZ.
 
