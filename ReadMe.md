@@ -14,6 +14,8 @@ Applying plots and statistics among compare groups to evaluate the various appro
 
 ### who implemented the GRU rate stock predict model and LSTM rate stock predict model
 
+There are 3 folders in my space, "data preprocessing code", "input data", "models and results".
+
 Instructions for GRU and LSTM models(accomplished by Hongzhen Xu):
 
 When run the code, make sure the paths to the files are correct.
